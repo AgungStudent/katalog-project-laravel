@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\FinishingMachineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/tes', 'template.auth');
+// LandingPage
+Route::get('/home',[FrontendController::class,'homepage'])->name('home');
+Route::get('/product/{product}',[ProductController::class,'showProduct'])->name('detail');
+Route::get('/product',[ProductController::class, 'showAll'])->name('product.show-all');
+
+// Dashboard
+Route::middleware(['auth','verified'])->prefix('dashboard')->group(function () {
+    Route::resource('product', ProductController::class)->except('show');
+    Route::resource('finishing-machinge', FinishingMachineController::class);
+});

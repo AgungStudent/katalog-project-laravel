@@ -44,7 +44,7 @@
                                 <div class="d-block">
                                     <div class="media d-inline-flex justify-content-evenly d-sm-block">
                                         <label>Email</label>
-                                        <p>{{$contacts[0]->value}}</p>
+                                        <p>{{optional($contacts[0])->value}}</p>
                                     </div>
                                 </div>
                                 <div class="d-block">

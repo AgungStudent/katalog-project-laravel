@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::transaction(function () {
-            $this->call(FinishingMachineSeeder::class);
-            $this->call(ProductSeeder::class);
             $this->call(UserSeeder::class);
             $this->call(ContactSeeder::class);
+            $this->call(FinishingMachineSeeder::class);
+            $this->call(ProductSeeder::class);
         });
         // \App\Models\User::factory(10)->create();
 

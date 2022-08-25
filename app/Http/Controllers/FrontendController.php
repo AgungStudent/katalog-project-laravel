@@ -73,6 +73,5 @@ class FrontendController extends Controller
             'products' => $this->products,
             'contacts' => $this->contacts,
         ]);
-        opt
     }
 }

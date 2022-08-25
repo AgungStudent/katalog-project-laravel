@@ -1,8 +1,8 @@
 @extends('template.dashboard')
-@section('header', 'Produk')
+@section('header', 'Klien Kita')
 
 @section('breadcrumb')
-<li class="breadcrumb-item active">Produk</li>
+<li class="breadcrumb-item active">Klien Kita</li>
 @endsection
 
 @section('style')
@@ -15,7 +15,7 @@
 
 <div class="card">
     <div class="card-header">
-        <a href="{{route('product.create')}}" class="btn btn-primary">Tambah Produk</a>
+        <a href="{{route('client.create')}}" class="btn btn-primary">Tambah Klien Kita</a>
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
@@ -28,21 +28,18 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($products as $product)
+                @forelse ($clients as $client)
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th>
-                    <td>{{$product->name}}</td>
-                    <td><img class="rounded" width="100" height="100" src="{{ asset('storage/'. $product->image) }}"
+                    <td>{{$client->name}}</td>
+                    <td><img class="rounded" width="100" height="100" src="{{ asset('storage/'. $client->image) }}"
                             alt="product" /></td>
                     <td class="mx-width-action">
-                        <a href={{ route('product.edit', $product->id) }} as="button"
+                        <a href={{ route('client.edit', $client->id) }} as="button"
                             class="btn btn-success">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="{{route('detail',$product->id)}}" class="btn btn-info">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <form action="{{ route('product.destroy', $product->id) }}" method="post"
+                        <form action="{{ route('client.destroy', $client->id) }}" method="post"
                             class="d-inline-block">
                             @method('delete')
                             @csrf
@@ -88,7 +85,7 @@
 
                 Swal.fire({
                 title: 'Apa anda yakin?',
-                text: `ingin menghapus data produk ini?`,
+                text: `ingin menghapus data klien ini?`,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

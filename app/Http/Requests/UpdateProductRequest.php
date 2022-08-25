@@ -25,7 +25,7 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name'=>['required','string'],
-            'image'=> ['image','max:3000'],
+            'image'=> ['image','max:3000','mimes:jpg,bmp,png,jpeg,ico'],
             'specifications' => ['required']
         ];
     }

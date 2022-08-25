@@ -1,8 +1,8 @@
 @extends('template.dashboard')
-@section('header', 'Produk')
+@section('header', 'Finishing Machine')
 
 @section('breadcrumb')
-<li class="breadcrumb-item active">Produk</li>
+<li class="breadcrumb-item active">Finishing Machine</li>
 @endsection
 
 @section('style')
@@ -15,7 +15,7 @@
 
 <div class="card">
     <div class="card-header">
-        <a href="{{route('product.create')}}" class="btn btn-primary">Tambah Produk</a>
+        <a href="{{route('finishing-machine.create')}}" class="btn btn-primary">Tambah Finishing Machine</a>
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
@@ -28,30 +28,66 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($products as $product)
+                @forelse ($finishingMachines as $machine)
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th>
-                    <td>{{$product->name}}</td>
-                    <td><img class="rounded" width="100" height="100" src="{{ asset('storage/'. $product->image) }}"
-                            alt="product" /></td>
+                    <td>{{$machine->name}}</td>
+                    <td><img class="rounded" width="100" height="100" src="{{ asset('storage/'. $machine->image) }}"
+                            alt="finishing machine" /></td>
                     <td class="mx-width-action">
-                        <a href={{ route('product.edit', $product->id) }} as="button"
+                        <a href={{ route('finishing-machine.edit', $machine->id) }} as="button"
                             class="btn btn-success">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="{{route('detail',$product->id)}}" class="btn btn-info">
+
+                        <button type="button" class="btn btn-info" data-toggle="modal"
+                            data-target="#myModal{{$machine->id}}">
                             <i class="fas fa-eye"></i>
-                        </a>
-                        <form action="{{ route('product.destroy', $product->id) }}" method="post"
+                        </button>
+
+                        <form action="{{ route('finishing-machine.destroy', $machine->id) }}" method="post"
                             class="d-inline-block">
                             @method('delete')
                             @csrf
-                            <button type="submit" class="btn btn-danger show-confirm">
+                            <button type="button" class="btn btn-danger show-confirm">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </form>
                     </td>
                 </tr>
+
+                <!-- Modal Show -->
+                <div class="modal fade" id="myModal{{$machine->id}}" tabindex="-1" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel">Finishing Machine</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                    <div class="card py-3 shadow-sm h-100  ">
+                                        <div class="text-center"><a href="/detail/1"><img
+                                                    class="image-zoom rounded img-thumbnail"
+                                                    src="{{asset('storage/'.$machine->image)}}"
+                                                    width="90%" alt=""></a>
+                                            <div class="card-body px-2">
+                                                <h5 class="text-bold fs-1 heading-color">{{$machine->name}}</h5>
+                                                <p class="mb-0 card-text text-left">{!!$machine->description!!}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 @endforeach
             </tbody>
             <tfoot>
@@ -63,6 +99,11 @@
                 </tr>
             </tfoot>
         </table>
+
+
+
+
+
         @endsection
 
         @section('scripts')
@@ -88,7 +129,7 @@
 
                 Swal.fire({
                 title: 'Apa anda yakin?',
-                text: `ingin menghapus data produk ini?`,
+                text: `ingin menghapus data ini?`,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -107,6 +148,7 @@
                 "responsive": true,
                 "autoWidth": false,
             });
+
         </script>
 
         @endsection

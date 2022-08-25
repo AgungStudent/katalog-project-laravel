@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFinishingMachineRequest extends FormRequest
+class StoreClientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class StoreFinishingMachineRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> ['required','max:255', 'string'],
-            'image'=> ['required','image','max:3000','mimes:jpg,bmp,png,jpeg,ico'],
-            'description'=> ['required', 'string',]
+            'name'=> 'required|string|max:255',
+            'image'=> 'required|image|max:3000|mimes:jpg,bmp,png,jpeg,ico',
         ];
     }
 }

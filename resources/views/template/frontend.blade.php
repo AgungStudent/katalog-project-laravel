@@ -10,25 +10,26 @@
             z-index: 1;
           ">
         <div class="container">
-            <img src="assets/img/sidomulyo2.png" class="image-logo" alt="" /><button class="navbar-toggler collapsed"
-                type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="{{ asset('assets/img/sidomulyo2.png') }}" class="image-logo" alt="" /><button
+                class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
                     <!-- NAV LINK -->
                     <li class="nav-item px-2">
-                        <a class="nav-link fw-medium active" href="">Home</a>
+                        <a class="nav-link fw-medium active" href="{{ url('/home') }}">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link fw-medium active" href="about">Tentang Kami</a>
+                        <a class="nav-link fw-medium active" href="{{url('/about')}}">Tentang Kami</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link fw-medium active" href="products">Produk</a>
+                        <a class="nav-link fw-medium active" href="{{url('/products')}}">Produk</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link fw-medium active" href="clients">Klein Kami</a>
+                        <a class="nav-link fw-medium active" href="{{url('/client')}}">Klein Kami</a>
                     </li>
                     <!-- NAV LINK -->
                 </ul>
@@ -54,7 +55,7 @@
         </section>
         <section class="py-0 bg-primary-gradient">
             <div class="bg-holder" style="
-                background-image: url('assets/img/illustrations/footer-bg.png');
+                background-image: url('{{asset('assets/img/illustrations/footer-bg.png')}}');
                 background-position: center bottom;
                 background-size: cover;
               "></div>
@@ -66,18 +67,12 @@
                             Finishing Machine
                         </h5>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
-                            <li class="mb-3">
-                                <a class="text-light text-decoration-none">Mesin Shimming FR900</a>
-                            </li>
-                            <li class="mb-3">
-                                <a class="text-light text-decoration-none">Mesin Cannon IR5000i</a>
-                            </li>
-                            <li class="mb-3">
-                                <a class="text-light text-decoration-none">Mesin Shimming FR-800PH</a>
-                            </li>
-                            <li class="mb-3">
-                                <a class="text-light text-decoration-none">Paper Trimmer</a>
-                            </li>
+                            @isset($finishingMachines)
+                            @for ($i = 0; $i < 4; $i++) <li class="mb-3">
+                                <a class="text-light text-decoration-none">{{$finishingMachines[$i]->name}}</a>
+                                </li>
+                                @endfor
+                                @endisset
                         </ul>
                     </div>
                     {{-- END FINISHING MACHINE --}}
@@ -90,9 +85,10 @@
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             @isset($products)
                                 @for ($i = 0; $i < 4; $i++)
-                                 <li class="mb-3">
-                                    <a class="text-light text-decoration-none">{{$products[$i]->name}}</a>
-                                </li>
+                                    <li class="mb-3">
+                                        <a class="text-light text-decoration-none"
+                                         href="{{ url('/product', [$products[$i]->id]) }}">{{$products[$i]->name}}</a>
+                                    </li>
                                 @endfor
                             @endisset
                         </ul>
@@ -107,11 +103,11 @@
                             </li>
                             <li class="mb-3">
                                 <a class="text-light text-decoration-none"><i
-                                        class="fas fa-phone me-3"></i>+6288808888880</a>
+                                        class="fas fa-phone me-3"></i>{{$contacts[1]->value}}</a>
                             </li>
                             <li class="mb-3">
                                 <a class="text-light text-decoration-none"><i
-                                        class="fas fa-envelope me-3"></i>sidocvmulyo@gmail.com</a>
+                                        class="fas fa-envelope me-3"></i>{{$contacts[0]->value}}</a>
                             </li>
                         </ul>
                     </div>
@@ -131,7 +127,7 @@
         </div>
     </footer>
     <!-- END FOOTER -->
-    <a href="https://api.whatsapp.com/send?phone=+6288808888880&amp;text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202."
+    <a href="https://api.whatsapp.com/send?phone={{$contacts[1]->value ?? '+6288808888880' }}&amp;text=Hola%21%20Sidomulyo%20%20Advertising."
         class="float" target="_blank"><i class="fab fa-whatsapp my-float"></i></a>
 </main>
 

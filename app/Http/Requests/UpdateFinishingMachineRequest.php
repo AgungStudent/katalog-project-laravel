@@ -13,7 +13,7 @@ class UpdateFinishingMachineRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateFinishingMachineRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=> ['required','max:255', 'string'],
+            'image'=> ['image','max:3000','mimes:jpg,bmp,png,jpeg,ico'],
+            'description'=> ['required', 'string',]
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FinishingMachine;
 use App\Http\Requests\StoreFinishingMachineRequest;
 use App\Http\Requests\UpdateFinishingMachineRequest;
+use Illuminate\Support\Facades\Storage;
 
 class FinishingMachineController extends Controller
 {
@@ -15,7 +16,8 @@ class FinishingMachineController extends Controller
      */
     public function index()
     {
-        //
+        $finishingMachines = FinishingMachine::all();
+        return view('finishing-machine.index', compact('finishingMachines'));
     }
 
     /**
@@ -25,7 +27,7 @@ class FinishingMachineController extends Controller
      */
     public function create()
     {
-        //
+        return view('finishing-machine.create');
     }
 
     /**
@@ -36,7 +38,11 @@ class FinishingMachineController extends Controller
      */
     public function store(StoreFinishingMachineRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['image'] = $request->file('image')->store('finising-machine');
+
+        FinishingMachine::create($validated);
+        return redirect()->route('finishing-machine.index')->with('success', "Berhasil menambah data finising machine!");
     }
 
     /**
@@ -47,7 +53,7 @@ class FinishingMachineController extends Controller
      */
     public function show(FinishingMachine $finishingMachine)
     {
-        //
+        return response()->json($finishingMachine);
     }
 
     /**
@@ -58,7 +64,7 @@ class FinishingMachineController extends Controller
      */
     public function edit(FinishingMachine $finishingMachine)
     {
-        //
+        return view('finishing-machine.edit', compact('finishingMachine'));
     }
 
     /**
@@ -70,7 +76,16 @@ class FinishingMachineController extends Controller
      */
     public function update(UpdateFinishingMachineRequest $request, FinishingMachine $finishingMachine)
     {
-        //
+        $validated = $request->validated();
+        if (is_null($request->file('image'))) {
+            $validated['image'] = $finishingMachine->image;
+        } else {
+            $validated['image'] = $request->file('image')->store('finising-machine');
+            Storage::delete($finishingMachine->image);
+        }
+
+        $finishingMachine->update($validated);
+        return redirect()->route('finishing-machine.index')->with('success',"data finishing machine berhasil dirubah");
     }
 
     /**
@@ -81,6 +96,9 @@ class FinishingMachineController extends Controller
      */
     public function destroy(FinishingMachine $finishingMachine)
     {
-        //
+        $finishingMachine->delete();
+        Storage::delete($finishingMachine->image);
+
+        return redirect()->route('finishing-machine.index')->with('success',"data berhasil di hapus");
     }
 }

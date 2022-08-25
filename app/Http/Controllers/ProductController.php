@@ -102,15 +102,4 @@ class ProductController extends Controller
         Storage::delete($product->image);
         return redirect()->back()->with("success", "Berhasil menghapus produk");
     }
-
-    public function showAll()
-    {
-        $products = Product::simplePaginate(10);
-        return view('frontend.product',compact('products'));
-    }
-
-    public function ShowProduct(Product $product)
-    {
-       dd($product);
-    }
 }

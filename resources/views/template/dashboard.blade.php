@@ -23,23 +23,15 @@
                             alt="User Image"> --}}
                         <span class="d-none d-md-inline">{{auth()->user()->name}}</span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <ul class="dropdown-menu dropdown-menu dropdown-menu-right">
                         <!-- User image -->
-                        <li class="user-header bg-primary">
-                            {{-- <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2"
-                                alt="User Image"> --}}
 
-                            <p>
-                                {{auth()->user()->name}}
-                                <small>{{auth()->user()->email}}</small>
-                            </p>
-                        </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
                             <form action="{{route('logout')}}" method="post">
                                 @csrf
-                                <button type="submit" class="btn btn-danger btn-block">Logout</button>
+                                <button type="submit" class="btn btn-block text-bold btn-outline-danger">Logout</button>
                             </form>
                         </li>
                     </ul>
@@ -51,9 +43,9 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
-                <img src="../../dist/img/AdminLTELogo.png" alt="logo perusahaan"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="{{url('/home')}}" class="brand-link">
+                <img src="{{ asset('assets/img/sidomulyo2.png') }}" alt="logo perusahaan"
+                    class="brand-image elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">&nbsp;</span>
             </a>
 
@@ -74,23 +66,32 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('product.index') }}"
-                                class="nav-link {{ Request::is('dashboard/finishing-machinge') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-store"></i>
+                            <a href="{{ route('finishing-machine.index') }}"
+                                class="nav-link {{ Request::is('dashboard/finishing-machine') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-cash-register"></i>
                                 <p>
                                     Finishing Machine
                                 </p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="{{ route('product.index') }}"
-                                class="nav-link {{ Request::is('dashboard/product') ? 'active' : '' }}">
+                        <li class="nav-item">
+                            <a href="{{ route('contact.index') }}"
+                                class="nav-link {{ Request::is('dashboard/contact') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-store"></i>
                                 <p>
-                                    Produk
+                                    Kontak
                                 </p>
                             </a>
-                        </li> --}}
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('client.index') }}"
+                                class="nav-link {{ Request::is('dashboard/client') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-store"></i>
+                                <p>
+                                   Klien Kita
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

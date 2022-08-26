@@ -38,13 +38,13 @@
                                 <div class="d-block">
                                     <div class="media d-inline-flex justify-content-evenly d-sm-block">
                                         <label>Telepon</label>
-                                        <p>{{$contacts[1]->value}}</p>
+                                        <p>{{optional(isset($contacts[1]) ? $contacts[1] : null)->value}}</p>
                                     </div>
                                 </div>
                                 <div class="d-block">
                                     <div class="media d-inline-flex justify-content-evenly d-sm-block">
                                         <label>Email</label>
-                                        <p>{{optional($contacts[0])->value}}</p>
+                                        <p>{{optional(isset($contacts[0]) ? $contacts[0] : null)->value}}</p>
                                     </div>
                                 </div>
                                 <div class="d-block">

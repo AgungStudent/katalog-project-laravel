@@ -69,7 +69,7 @@
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             @isset($finishingMachines)
                             @for ($i = 0; $i < 4; $i++) <li class="mb-3">
-                                <a class="text-light text-decoration-none">{{$finishingMachines[$i]->name}}</a>
+                                <a class="text-light text-decoration-none">{{optional(isset($finishingMachines[$i]) ? $finishingMachines[$i] : null)->name}}</a>
                                 </li>
                                 @endfor
                                 @endisset
@@ -87,7 +87,7 @@
                                 @for ($i = 0; $i < 4; $i++)
                                     <li class="mb-3">
                                         <a class="text-light text-decoration-none"
-                                         href="{{ url('/product', [$products[$i]->id]) }}">{{$products[$i]->name}}</a>
+                                         href="{{ url('/product', [optional(isset($products[$i]) ? $products[$i] : null)->id]) }}">{{optional(isset($products[$i]) ? $products[$i] : null)->name}}</a>
                                     </li>
                                 @endfor
                             @endisset
@@ -103,11 +103,11 @@
                             </li>
                             <li class="mb-3">
                                 <a class="text-light text-decoration-none"><i
-                                        class="fas fa-phone me-3"></i>{{$contacts[1]->value}}</a>
+                                        class="fas fa-phone me-3"></i>{{optional(isset($contacts[1]) ? $contacts[1] : null)->value}}</a>
                             </li>
                             <li class="mb-3">
                                 <a class="text-light text-decoration-none"><i
-                                        class="fas fa-envelope me-3"></i>{{$contacts[0]->value}}</a>
+                                        class="fas fa-envelope me-3"></i>{{optional(isset($contacts[0]) ? $contacts[0] : null)->value}}</a>
                             </li>
                         </ul>
                     </div>
@@ -127,7 +127,7 @@
         </div>
     </footer>
     <!-- END FOOTER -->
-    <a href="https://api.whatsapp.com/send?phone={{$contacts[1]->value ?? '+6288808888880' }}&amp;text=Hola%21%20Sidomulyo%20%20Advertising."
+    <a href="https://api.whatsapp.com/send?phone={{optional(isset($contacts[0]) ? $contacts[0] : null)->value ?? '+6288808888880' }}&amp;text=Hola%21%20Sidomulyo%20%20Advertising."
         class="float" target="_blank"><i class="fab fa-whatsapp my-float"></i></a>
 </main>
 

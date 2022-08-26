@@ -1,6 +1,7 @@
 @extends('template.frontend')
 
 @section('content')
+
 <!-- HEADER -->
 <section class="pb-0" id="home" style="
           background-image: url('assets/img/illustrations/blurry-gradient-haikei.svg');
@@ -106,20 +107,19 @@
             </div>
         </div>
         <div class="row h-100">
-            @isset($finishingMachines)
-            @for ($i = 0; $i< 3; $i++)
-             <div class="col-sm-6 col-lg-4 pb-lg-6 px-lg-4 pb-4">
+            @foreach ($finishingMachines as $machine)
+            @if ($loop->index <= 3) <div class="col-sm-6 col-lg-4 pb-lg-6 px-lg-4 pb-4">
                 <div class="card py-3 shadow-sm">
-                    <a href="detail/1"><img class="image-zoom rounded" src="{{ asset('storage/'.$finishingMachines[$i]->image) }}"
+                    <a href="detail/1"><img class="image-zoom rounded" src="{{ asset('storage/'.$machine->image) }}"
                             width="90%" height="50%" alt="" /></a>
                     <div class="card-body px-2">
-                        <h6 class="fw-bold fs-1 heading-color">{{$finishingMachines[$i]->name}}</h6>
-                        <p class="mb-0 card-text text-left">{!! $finishingMachines[$i]->description !!}</p>
+                        <h6 class="fw-bold fs-1 heading-color">{{$machine->name}}</h6>
+                        <p class="mb-0 card-text text-left">{!! $machine->description !!}</p>
                     </div>
                 </div>
-            </div>
-                @endfor
-                @endisset
+        </div>
+        @endif
+        @endforeach
     </div>
     </div>
 </section>
@@ -163,7 +163,11 @@
                         </div>
                     </div>
                     @empty
-                    <p class="text-center">Maaf, belum ada data produk :(</p>
+                    <div class="col-md-12">
+                        <div class="alert alert-danger text-center" role="alert">
+                            Maaf, belum ada data produk :(
+                        </div>
+                    </div>
                     @endforelse
                 </div>
             </div>

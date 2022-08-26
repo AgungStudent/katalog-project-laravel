@@ -38,7 +38,7 @@
                         </div>
 
                         @empty
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger text-center" role="alert">
                             Data produk tidak ditemukan!
                         </div>
                         @endforelse

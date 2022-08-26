@@ -31,7 +31,6 @@ class FrontendController extends Controller
 
     public function homepage()
     {
-
         return view('frontend.homepage', [
             'clients' => Client::get()->take(11),
         ] + $this->data());

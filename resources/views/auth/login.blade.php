@@ -38,7 +38,7 @@ Login
                     <div class="icheck-primary">
                         <input type="checkbox" id="remember">
                         <label for="remember">
-                            Remember Me
+                            Ingat Aku
                         </label>
                     </div>
                 </div>

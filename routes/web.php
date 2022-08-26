@@ -29,6 +29,7 @@ Route::get('/client', [FrontendController::class, 'client'])->name('client');
 Route::get('/finishing-machine', [FrontendController::class, 'finishingMachines'])->name('finishing-machine');
 Route::get('/product/{product}', [FrontendController::class, 'showProduct'])->name('detail');
 Route::get('/products', [FrontendController::class, 'showAllProduct'])->name('product.show-all');
+Route::get('/loginAdmin',fn()=> redirect('/login'));
 
 // Dashboard
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {

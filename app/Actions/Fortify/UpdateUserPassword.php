@@ -28,6 +28,7 @@ class UpdateUserPassword implements UpdatesUserPasswords
             }
         })->validateWithBag('updatePassword');
 
+        session()->flash('success','berhasil merubah password');
         $user->forceFill([
             'password' => Hash::make($input['password']),
         ])->save();

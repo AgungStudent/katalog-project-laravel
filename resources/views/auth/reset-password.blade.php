@@ -52,9 +52,9 @@
             </div>
         </form>
 
-        {{-- <p class="mb-1">
-            <a href="forgot-password.html">I forgot my password</a>
-        </p> --}}
+        <p class="mb-1">
+            <a href="{{route('product.index')}}">Kembali ke dashboard</a>
+        </p>
 
     </div>
     <!-- /.login-card-body -->
@@ -66,8 +66,14 @@
 <!-- Toastr -->
 <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 
-@if ($errors->any())
-@foreach ($errors->all() as $error)
+@if (session('success'))
+<script>
+    toastr.success("{{session('success')}}")
+</script>
+@endif
+
+@if ($errors->updatePassword->any())
+@foreach ($errors->updatePassword->all() as $error)
 <script>
     toastr.error("{{$error}}")
 </script>

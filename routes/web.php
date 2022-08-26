@@ -36,4 +36,5 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::resource('finishing-machine', FinishingMachineController::class)->except('show');
     Route::apiResource('contact', ContactController::class)->except(['show','destroy']);
     Route::resource('client', ClientController::class)->except('show');
+    Route::get('/reset-password',fn()=> view('auth.reset-password'))->name('update-password.page');
 });

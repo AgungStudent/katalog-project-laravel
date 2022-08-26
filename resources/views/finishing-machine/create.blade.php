@@ -1,7 +1,7 @@
 @extends('template.dashboard')
 
 @section('header')
-Tambah Finishing Machine
+<i class="nav-icon fas fa-cash-register ml-2"></i> Tambah Finishing Machine
 @endsection
 
 @section('breadcrumb')

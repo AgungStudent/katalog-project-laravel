@@ -1,7 +1,7 @@
 @extends('template.dashboard')
 
 @section('header')
-Tambah Produk
+<i class="ml-2 fas fa-store"></i> Tambah Produk
 @endsection
 
 @section('breadcrumb')

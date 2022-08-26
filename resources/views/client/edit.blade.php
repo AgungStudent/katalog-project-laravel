@@ -1,7 +1,7 @@
 @extends('template.dashboard')
 
 @section('header')
-Edit Klien Kita
+<i class="fas fa-link ml-2"></i> Edit Klien Kita
 @endsection
 
 @section('breadcrumb')

@@ -11,7 +11,9 @@
 <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
 @endsection
 
-@section('header',"Kontak")
+@section('header')
+<i class="ml-2 fas fa-address-card"></i> Kontak
+@endsection
 
 @section('content')
 @foreach ($contacts as $contact)
@@ -21,7 +23,9 @@
             <div class="col-9">
                 <div class="info-box bg-info">
 
-                    <span class="info-box-icon"><i class="fas fa-stopwatch"></i></span>
+                    <span class="info-box-icon">
+                        <i class="fas fa-address-card"></i>
+                    </span>
                     <div class="info-box-content my-2">
                         <span class="info-box-number">{{$contact->name_contact}}</span>
 

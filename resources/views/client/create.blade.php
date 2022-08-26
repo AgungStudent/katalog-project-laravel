@@ -1,7 +1,7 @@
 @extends('template.dashboard')
 
 @section('header')
-Tambah Klien Kita
+<i class="fas fa-link ml-2"></i> Tambah Klien Kita
 @endsection
 
 @section('breadcrumb')

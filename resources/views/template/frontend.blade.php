@@ -127,7 +127,7 @@
         </div>
     </footer>
     <!-- END FOOTER -->
-    <a href="https://api.whatsapp.com/send?phone={{optional(isset($contacts[0]) ? $contacts[0] : null)->value ?? '+6288808888880' }}&amp;text=Hola%21%20Sidomulyo%20%20Advertising."
+    <a href="https://api.whatsapp.com/send?phone={{optional(isset($contacts[1]) ? $contacts[1] : null)->value ?? '+6288808888880' }}&amp;text=Hola%21%20Sidomulyo%20%20Advertising."
         class="float" target="_blank"><i class="fab fa-whatsapp my-float"></i></a>
 </main>
 

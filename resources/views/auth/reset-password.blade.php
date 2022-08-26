@@ -1,27 +1,29 @@
 @extends('template.auth')
 
 @section('title')
-Login
+   Reset Password
 @endsection
 
 @section('style')
-  <!-- Toastr -->
-  <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
+<!-- Toastr -->
+<link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
 @endsection
 
 @section('content')
 
 <div class="card p-3 rounded shadow">
     <div class="card-body login-card-body">
-        <p class="login-box-msg">Form Login Admin</p>
-        <form action="{{ route('login')}}" method="post">
+        <p class="login-box-msg">Form Reset Password</p>
+        <form action="{{ route('user-password.update')}}" method="post">
             @csrf
+            @method('put')
 
             <div class="input-group mb-3">
-                <input type="email" class="form-control" name="email" placeholder="Email" value="{{old('email')}}">
+                <input type="password" class="form-control" name="current_password" placeholder="Password saat ini"
+                    value="">
                 <div class="input-group-append">
                     <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
+                        <span class="fas fa-key"></span>
                     </div>
                 </div>
             </div>
@@ -33,18 +35,18 @@ Login
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-8">
-                    <div class="icheck-primary">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">
-                            Remember Me
-                        </label>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" name="password_confirmation" placeholder="Konfirmasi Password">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <!-- /.col -->
-                <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-danger btn-block">Ubah Password</button>
                 </div>
                 <!-- /.col -->
             </div>
@@ -65,9 +67,11 @@ Login
 <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 
 @if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <script> toastr.error("{{$error}}") </script>
-    @endforeach
+@foreach ($errors->all() as $error)
+<script>
+    toastr.error("{{$error}}")
+</script>
+@endforeach
 @endif
 
 @endsection

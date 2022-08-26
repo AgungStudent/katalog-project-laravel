@@ -17,25 +17,23 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 {{-- USER --}}
-                <li class="nav-item dropdown user-menu">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        {{-- <img src="../../dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2"
-                            alt="User Image"> --}}
-                        <span class="d-none d-md-inline">{{auth()->user()->name}}</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu dropdown-menu-right">
-                        <!-- User image -->
-
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
-                            <form action="{{route('logout')}}" method="post">
+                <div class="dropdown">
+                    <button class="btn btn-link text-dark dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-expanded="false">
+                       {{auth()->user()->name}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item text-center" href="{{route('update-password.page')}}">Reset Password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">
+                            <form action="{{route('logout')}}" method="post" class="text-center">
                                 @csrf
-                                <button type="submit" class="btn btn-block text-bold btn-outline-danger">Logout</button>
+                                <button type="submit"
+                                    class="btn btn-link text-bold text-center text-danger">Logout</button>
                             </form>
-                        </li>
-                    </ul>
-                </li>
+                        </a>
+                    </div>
+                </div>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -77,7 +75,7 @@
                         <li class="nav-item">
                             <a href="{{ route('contact.index') }}"
                                 class="nav-link {{ Request::is('dashboard/contact') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-store"></i>
+                                <i class="nav-icon fas fa-address-card"></i>
                                 <p>
                                     Kontak
                                 </p>
@@ -86,9 +84,9 @@
                         <li class="nav-item">
                             <a href="{{ route('client.index') }}"
                                 class="nav-link {{ Request::is('dashboard/client') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-store"></i>
+                                <i class="nav-icon fas fa-link"></i>
                                 <p>
-                                   Klien Kita
+                                    Klien Kita
                                 </p>
                             </a>
                         </li>

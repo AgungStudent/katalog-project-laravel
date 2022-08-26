@@ -1,5 +1,8 @@
 @extends('template.dashboard')
-@section('header', 'Produk')
+
+@section('header')
+<i class="ml-2 fas fa-store"></i> Produk
+@endsection
 
 @section('breadcrumb')
 <li class="breadcrumb-item active">Produk</li>

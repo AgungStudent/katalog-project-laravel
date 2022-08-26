@@ -1,5 +1,7 @@
 @extends('template.dashboard')
-@section('header', 'Klien Kita')
+@section('header')
+<i class="fas fa-link ml-2"></i> Klien Kita
+@endsection
 
 @section('breadcrumb')
 <li class="breadcrumb-item active">Klien Kita</li>
@@ -39,8 +41,7 @@
                             class="btn btn-success">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <form action="{{ route('client.destroy', $client->id) }}" method="post"
-                            class="d-inline-block">
+                        <form action="{{ route('client.destroy', $client->id) }}" method="post" class="d-inline-block">
                             @method('delete')
                             @csrf
                             <button type="submit" class="btn btn-danger show-confirm">

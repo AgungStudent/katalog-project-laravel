@@ -1,7 +1,7 @@
 @extends('template.dashboard')
 
 @section('header')
-Edit Finishing Machine
+<i class="nav-icon fas fa-cash-register ml-2"></i> Edit Finishing Machine
 @endsection
 
 @section('breadcrumb')

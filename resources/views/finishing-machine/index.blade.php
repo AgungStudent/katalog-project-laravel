@@ -1,5 +1,8 @@
 @extends('template.dashboard')
-@section('header', 'Finishing Machine')
+
+@section('header')
+<i class="nav-icon fas fa-cash-register ml-2"></i> Finishing Machine
+@endsection
 
 @section('breadcrumb')
 <li class="breadcrumb-item active">Finishing Machine</li>

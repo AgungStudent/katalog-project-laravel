@@ -2,7 +2,7 @@
 
 @section('content')
 <div
-    style="background-image: url(&quot;/assets/img/background.png&quot;); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+    style="background-image: url({{asset('assets/img/background.png')}}); background-size: cover; background-repeat: no-repeat; background-position: center center;">
     <div>
         <div></div>
         <div class="container" id="product" style="padding-top: 10vh;">

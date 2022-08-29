@@ -18,24 +18,26 @@ use App\Http\Controllers\FinishingMachineController;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('home');
-});
 
+Route::middleware('auto-logout')->group(function () {
 // LandingPage
-Route::get('/home', [FrontendController::class, 'homepage'])->name('home');
-Route::get('/about', [FrontendController::class, 'about'])->name('about');
-Route::get('/client', [FrontendController::class, 'client'])->name('client');
-Route::get('/finishing-machine', [FrontendController::class, 'finishingMachines'])->name('finishing-machine');
-Route::get('/product/{product}', [FrontendController::class, 'showProduct'])->name('detail');
-Route::get('/products', [FrontendController::class, 'showAllProduct'])->name('product.show-all');
-Route::get('/loginAdmin',fn()=> redirect('/login'));
+    Route::get('/', function () {
+        return redirect()->route('home');
+    });
+    Route::get('/home', [FrontendController::class, 'homepage'])->name('home');
+    Route::get('/about', [FrontendController::class, 'about'])->name('about');
+    Route::get('/client', [FrontendController::class, 'client'])->name('client');
+    Route::get('/finishing-machine', [FrontendController::class, 'finishingMachines'])->name('finishing-machine');
+    Route::get('/product/{product}', [FrontendController::class, 'showProduct'])->name('detail');
+    Route::get('/products', [FrontendController::class, 'showAllProduct'])->name('product.show-all');
+    Route::get('/loginAdmin', fn () => redirect('/login'));
+});
 
 // Dashboard
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
     Route::resource('product', ProductController::class)->except('show');
     Route::resource('finishing-machine', FinishingMachineController::class)->except('show');
-    Route::apiResource('contact', ContactController::class)->except(['show','destroy']);
+    Route::apiResource('contact', ContactController::class)->except(['show', 'destroy']);
     Route::resource('client', ClientController::class)->except('show');
-    Route::get('/reset-password',fn()=> view('auth.reset-password'))->name('update-password.page');
+    Route::get('/reset-password', fn () => view('auth.reset-password'))->name('update-password.page');
 });

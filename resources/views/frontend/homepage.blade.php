@@ -4,13 +4,14 @@
 
 <!-- HEADER -->
 <section class="pb-0" id="home" style="
-          background-image: url('assets/img/illustrations/blurry-gradient-haikei.svg');
+          background-image: url('{{asset('assets/img/illustrations/blurry-gradient-haikei.svg')}}');
           background-size: cover;
         ">
     <div class="container">
         <div class="row flex-center">
             <div class="col-md-5 order-md-1 text-center text-md-end">
-                <img class="img-fluid mb-4" src="assets/img/illustrations/printing.svg" width="450" alt="" />
+                <img class="img-fluid mb-4" src="{{ asset('assets/img/illustrations/printing.svg') }}" width="450"
+                    alt="" />
             </div>
             <div class="col-md-5 text-center text-md-start">
                 <h6 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3 text-uppercase">
@@ -26,7 +27,7 @@
             </div>
         </div>
     </div>
-    <svg xmlns="assets/img/illustrations/wave.svg" viewBox="0 0 1440 320">
+    <svg xmlns="{{ asset('assets/img/illustrations/wave.svg') }}" viewBox="0 0 1440 320">
         <path fill="#ffffff" fill-opacity="1"
             d="M0,32L60,80C120,128,240,224,360,229.3C480,235,600,149,720,133.3C840,117,960,171,1080,160C1200,149,1320,75,1380,37.3L1440,0L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
         </path>
@@ -76,7 +77,8 @@
     <div class="container">
         <div class="row flex-center">
             <div class="col-md-5 order-md-0 text-center text-md-start">
-                <img class="img-fluid mb-4" src="assets/img/illustrations/printing2.jpg" width="450" alt="" />
+                <img class="img-fluid mb-4" src="{{ asset('assets/img/illustrations/printing2.jpg') }}" width="450"
+                    alt="" />
             </div>
             <div class="col-md-5 text-center text-md-start">
                 <h5 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">
@@ -152,8 +154,9 @@
                                         src="{{ asset('storage/'.$product->image) }}" width="90%" alt="" /></a>
                                 <div class="card-body px-2">
                                     <h6 class="fw-bold fs-1 heading-color">{{$product->name}}</h6>
-                                    <p class="mb-0 card-text text-left">{{
-                                        str(strip_tags($product->specifications))->limit(50) }}</p>
+                                    <p class="mb-0 card-text text-left">
+                                        {!! str(strip_tags($product->specifications))->limit(50) !!}
+                                    </p>
                                     <div class="mt-3">
                                         <a class="text-center p-2 d-block btn btn-outline-primary"
                                             href="{{route('detail',$product->id)}}">Detail</a>
@@ -165,7 +168,7 @@
                     @empty
                     <div class="col-md-12">
                         <div class="alert alert-danger text-center" role="alert">
-                            Maaf, belum ada data produk :(
+                            Maaf, belum ada data produk
                         </div>
                     </div>
                     @endforelse

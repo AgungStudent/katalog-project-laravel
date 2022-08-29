@@ -5,8 +5,8 @@ Login
 @endsection
 
 @section('style')
-  <!-- Toastr -->
-  <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
+<!-- Toastr -->
+<link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
 @endsection
 
 @section('content')
@@ -26,11 +26,9 @@ Login
                 </div>
             </div>
             <div class="input-group mb-3">
-                <input type="password" class="form-control" name="password" placeholder="Password">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
-                    </div>
+                <input type="password" class="form-control" name="password" placeholder="Password" id="password-show">
+                <div class="input-group-append input-group-text">
+                    <span toggle="#password-show" class="fas fa-eye show-password"></span>
                 </div>
             </div>
             <div class="row">
@@ -65,9 +63,26 @@ Login
 <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 
 @if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <script> toastr.error("{{$error}}") </script>
-    @endforeach
+@foreach ($errors->all() as $error)
+<script>
+    toastr.error("{{$error}}")
+</script>
+@endforeach
 @endif
+<script>
+    $(document).ready(function () {
+        $('.show-password').click(function () {
+            $(this).toggleClass('fa-eye fa-eye-slash');
+            var input = $($(this).attr('toggle'));
+            if(input.attr('type') == "password"){
+                input.attr('type','text');
+            }
+            else{
+                input.attr('type','password');
+            }
+        });
+
+    });
+</script>
 
 @endsection

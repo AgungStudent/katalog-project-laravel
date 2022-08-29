@@ -2,8 +2,8 @@
 
 @section('content')
 <div
-    style="background-image: url(&quot;/assets/img/bg2.jpg&quot;); background-size: cover; background-attachment: fixed; background-repeat: no-repeat; background-position: center center;">
-    <div class="px-4 py-7 text-center"><img class="d-block mx-auto mb-4" src="/assets/img/sidomulyo2.png" alt="">
+    style="background-image: url({{asset('assets/img/bg2.jpg')}}); background-size: cover; background-attachment: fixed; background-repeat: no-repeat; background-position: center center;">
+    <div class="px-4 py-7 text-center"><img class="d-block mx-auto mb-4" src="{{ asset('assets/img/sidomulyo2.png') }}" alt="">
         <h1 class="display-5 fw-bold text-shadow">Tentang Kami</h1>
         <div class="col-lg-6 mx-auto shadow-sm p-4">
             <p class="lead mb-4">Sidomulyo Advertising adalah salah satu perusahaan yang bergerak di bidang layanan jasa
@@ -97,7 +97,7 @@
         <div class="container">
             <div class="row flex-center">
                 <div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4"
-                        src="assets/img/illustrations/printing4.jpg" width="450" alt=""></div>
+                        src="{{ asset('assets/img/illustrations/printing4.jpg') }}" width="450" alt=""></div>
                 <div class="col-md-5 text-center text-md-start">
                     <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm"></h6>
                     <p class="my-4 pe-xl-8"></p>

@@ -22,7 +22,8 @@
                         <div class="col-sm-6 col-lg-4 pb-lg-6 px-lg-4 pb-4">
                             <div class="card py-3 shadow-sm h-100 hover-top">
                                 <div class="text-center">
-                                    <a href="{{route('detail',$product->id)}}"><img class="image-zoom rounded"
+                                    <a href="{{route('detail',$product->id)}}">
+                                        <img class="image-zoom rounded resize-image"
                                             src="{{ asset('storage/'.$product->image) }}" width="90%" alt="" /></a>
                                     <div class="card-body px-2">
                                         <h6 class="fw-bold fs-1 heading-color">{{$product->name}}</h6>

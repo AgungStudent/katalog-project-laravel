@@ -102,20 +102,18 @@
                 <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">
                     Daftar Finishing Machine
                 </h5>
-                <h5 class="fw-light">
-                    <a class="text-info" href="finishing-machine">Lihat semua <i class="fas fa-arrow-right"></i>
-                    </a>
-                </h5>
             </div>
         </div>
         <div class="row h-100">
             @foreach ($finishingMachines as $machine)
             @if ($loop->index <= 3) <div class="col-sm-6 col-lg-4 pb-lg-6 px-lg-4 pb-4">
                 <div class="card py-3 shadow-sm">
-                    <a href="detail/1"><img class="image-zoom rounded" src="{{ asset('storage/'.$machine->image) }}"
-                            width="90%" height="50%" alt="" /></a>
+                    <div class="card-head text-center">
+                        <img class="image-zoom rounded resize-image" src="{{ asset('storage/'.$machine->image) }}"
+                            width="90%" height="50%" alt="" />
+                    </div>
                     <div class="card-body px-2">
-                        <h6 class="fw-bold fs-1 heading-color">{{$machine->name}}</h6>
+                        <h6 class="fw-bold fs-1 heading-color text-center">{{$machine->name}}</h6>
                         <p class="mb-0 card-text text-left">{!! $machine->description !!}</p>
                     </div>
                 </div>
@@ -123,6 +121,10 @@
         @endif
         @endforeach
     </div>
+    <h5 class="fw-light text-center pb-3">
+        <a class="text-info" href="{{url('/finishing-machine')}}">Lihat semua <i class="fas fa-arrow-right"></i>
+        </a>
+    </h5>
     </div>
 </section>
 <hr class="featurette-divider" />
@@ -135,10 +137,7 @@
         <div class="row justify-content-center">
             <div class="col-md-9 col-lg-6 text-center mb-3">
                 <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Daftar Produk</h5>
-                <h5 class="fw-light">
-                    <a class="text-info" href="{{url('/products')}}">Lihat semua <i class="fas fa-arrow-right"></i>
-                    </a>
-                </h5>
+
             </div>
         </div>
 
@@ -150,7 +149,7 @@
                     <div class="col-sm-6 col-lg-4 pb-lg-6 px-lg-4 pb-4">
                         <div class="card py-3 shadow-sm h-100 hover-top">
                             <div class="text-center">
-                                <a href="detail/1"><img class="image-zoom rounded"
+                                <a href="{{ route('detail', $product->id) }}"><img class="image-zoom rounded resize-image"
                                         src="{{ asset('storage/'.$product->image) }}" width="90%" alt="" /></a>
                                 <div class="card-body px-2">
                                     <h6 class="fw-bold fs-1 heading-color">{{$product->name}}</h6>
@@ -176,6 +175,11 @@
             </div>
         </div>
         <!-- END LIST PRODUK -->
+        <h5 class="fw-light text-center pb-3">
+            <a class="text-info" href="{{url('/products')}}">Lihat semua <i class="fas fa-arrow-right"></i>
+            </a>
+        </h5>
+
     </div>
 </div>
 <!-- END DAFTAR PRODUK -->

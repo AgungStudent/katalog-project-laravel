@@ -28,10 +28,10 @@ Route::middleware('auto-logout')->group(function () {
     Route::get('/about', [FrontendController::class, 'about'])->name('about');
     Route::get('/client', [FrontendController::class, 'client'])->name('client');
     Route::get('/finishing-machine', [FrontendController::class, 'finishingMachines'])->name('finishing-machine');
-    Route::get('/product/{product}', [FrontendController::class, 'showProduct'])->name('detail');
     Route::get('/products', [FrontendController::class, 'showAllProduct'])->name('product.show-all');
     Route::get('/loginAdmin', fn () => redirect('/login'));
 });
+    Route::get('/product/{product}', [FrontendController::class, 'showProduct'])->name('detail');
 
 // Dashboard
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {

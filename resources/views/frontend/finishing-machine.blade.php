@@ -12,7 +12,8 @@
             @forelse ($finishingMachines as $machine)
             <div class="col-sm-6 col-lg-4 pb-lg-6 px-lg-4 pb-4">
                 <div class="card py-3 shadow-sm h-100  ">
-                    <div class="text-center"><a><img class="image-zoom rounded img-thumbnail"
+                    <div class="text-center"><a>
+                        <img class="image-zoom rounded img-thumbnail resize-image"
                                 src="{{ asset('storage/'.$machine->image) }}" width="90%" alt="finishing-machine"></a>
                         <div class="card-body px-2">
                             <h6 class="fw-bold fs-1 heading-color">{{$machine->name}}</h6>

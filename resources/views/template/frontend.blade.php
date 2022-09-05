@@ -31,6 +31,9 @@
                     <li class="nav-item px-2">
                         <a class="nav-link fw-medium active" href="{{url('/client')}}">Klein Kami</a>
                     </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link fw-medium active" href="{{url('/finishing-machine')}}">Finishing Machine</a>
+                    </li>
                     <!-- NAV LINK -->
                 </ul>
             </div>
@@ -62,7 +65,7 @@
             <div class="container">
                 <div class="row justify-content-lg-between pt-5">
                     {{-- FINISHING MACHINE --}}
-                    <div class="col-6 col-sm-4 col-lg-auto mb-3" style="text-align: left">
+                    <div class="col-6 col-sm-4 col-lg-4 mb-3" style="text-align: left">
                         <h5 class="mb-5 text-white text-uppercase">
                             Finishing Machine
                         </h5>
@@ -78,7 +81,7 @@
                     {{-- END FINISHING MACHINE --}}
 
                     {{-- PRODUCT --}}
-                    <div class="col-6 col-sm-4 col-lg-auto mb-3" style="text-align: left">
+                    <div class="col-6 col-sm-4 col-lg-4 mb-3" style="text-align: left">
                         <h5 class="mb-5 text-white text-uppercase">
                             Produk
                         </h5>
@@ -93,7 +96,7 @@
                             @endisset
                         </ul>
                     </div>
-                    <div class="col-6 col-sm-4 col-lg-auto mb-3" style="text-align: left">
+                    <div class="col-6 col-sm-4 col-lg-4 mb-3" style="text-align: left">
                         <h5 class="mb-5 text-white text-uppercase">Kontak</h5>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             <li class="mb-3">
@@ -122,7 +125,7 @@
                 </div>
             </div>
         </section>
-        <div class="text-center p-4 text-dark" style="background-color: rgba(0, 0, 0, 0.05)">
+        <div class="text-center p-4 text-light" style="background-color: rgba(0, 0, 0, 0.05)">
             © Copyright 2022
         </div>
     </footer>

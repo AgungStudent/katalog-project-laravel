@@ -89,8 +89,8 @@
                 text: `ingin menghapus data klien ini?`,
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
                 confirmButtonText: 'Delete'
                 }).then((result) => {
                 if (result.value) {

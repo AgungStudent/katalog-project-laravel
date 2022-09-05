@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ asset('bootstrap5/css/bootstrap.min.css') }}">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> -->
 
     <!-- font awecome -->
@@ -22,6 +22,10 @@
         html {
             margin: 0;
             padding: 0;
+        }
+
+        .resize-image {
+            aspect-ratio: 16 / 9;
         }
     </style>
     {{--

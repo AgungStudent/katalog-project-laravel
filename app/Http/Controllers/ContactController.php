@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -75,6 +76,9 @@ class ContactController extends Controller
         $validated = $request->validate($rule);
 
         $contact->update($validated);
+        // if ($contact->name_contact == 'email') {
+        //     User::findOrFail(auth()->id())->update(['email' => $request->value]);
+        // }
         return redirect()->back()->with('success', "Berhasil merubah data kontak " . $contact->name_contact);
     }
 
